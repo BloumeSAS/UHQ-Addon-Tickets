@@ -1,0 +1,30 @@
+# ─── Développement local ──────────────────────────────────────────────────────
+# Lance l'addon tickets précompilé (après npm run build dans api/ et web/)
+# Pour le hot-reload, préférer :
+#   cd api && npm run start:dev  (NestJS :3107)
+#   cd web && npm run dev        (Vite :5175)
+
+services:
+  tickets:
+    build: .
+    container_name: uhq-addon-tickets
+    restart: unless-stopped
+    ports:
+      - "3107:3107"
+    environment:
+      PORT:          3107
+      PANEL_URL:     http://host.docker.internal:8000
+      DB_PATH:       /app/data/tickets-data.json
+      NODE_ENV:      production
+      # PANEL_API_KEY: votre-clé-api-panel
+    volumes:
+      - tickets_data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3107/uhq-manifest.json"]
+      interval: 30s
+      timeout:  5s
+      retries:  3
+
+volumes:
+  tickets_data:
+    driver: local

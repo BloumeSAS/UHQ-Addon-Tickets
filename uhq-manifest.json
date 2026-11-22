@@ -1,0 +1,23 @@
+{
+  "name": "Tickets",
+  "version": "1.0.0",
+  "description": "Support client intégré : tickets avec pièces jointes, console du personnel (Admin + Support), réponses types, notes internes, notation de satisfaction et notifications par e-mail.",
+  "icon": "LifeBuoy",
+  "author": { "name": "Bloume SAS", "email": "contact@bloume.fr", "url": "https://bloume.fr" },
+  "homepage": "https://github.com/BloumeSAS/UHQ-Addon-Tickets",
+  "license": "MIT",
+  "repository": "https://github.com/BloumeSAS/UHQ-Addon-Tickets",
+  "translations": {
+    "fr": { "addon.tickets.nav": "Support" },
+    "en": { "addon.tickets.nav": "Support" }
+  },
+  "pages": [
+    { "path": "/", "label": "addon.tickets.nav", "icon": "LifeBuoy", "showInNavbar": true, "adminOnly": false }
+  ],
+  "slots": [
+    { "zone": "topbar", "label": "addon.tickets.nav", "icon": "LifeBuoy", "page": "/", "adminOnly": false }
+  ],
+  "widgets": [],
+  "auth": { "passJwt": true, "passUserInfo": true },
+  "backup": { "exportEndpoint": "/api/backup/export", "importEndpoint": "/api/backup/import", "authHeader": "X-Panel-Key" }
+}
