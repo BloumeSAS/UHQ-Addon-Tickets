@@ -6,3 +6,7 @@ data/
 *-data.json
 out/
 data-test.json*
+
+# Harmonisé avec les autres addons officiels (dépendances, builds, données locales, pièces jointes, secrets)
+.env.local
+*-data.json*
